@@ -1,0 +1,174 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Button Group */
+.button-group {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.nav-button {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    margin: 5px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.nav-button:hover {
+    background-color: #0056b3;
+}
+
+/* Product List */
+.product-list {
+    list-style-type: none; /* Remove default list styling */
+    padding: 0;
+    margin-top: 20px;
+}
+
+.product-item {
+    background-color: #fafafa;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    border: 1px solid #e0e0e0;
+}
+
+.product-item div {
+    margin-bottom: 10px;
+}
+
+.product-item h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.product-item p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.product-item .price {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #28a745;
+}
+
+.product-item .available {
+    font-size: 0.9rem;
+    color: #007bff;
+}
+
+.product-actions {
+    display: flex;
+    justify-content: flex-end; /* Align actions to the right */
+    gap: 10px;
+}
+
+.product-item button {
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+}
+
+/* Edit Button */
+.product-item button.edit {
+    background-color: #ffc107;
+    color: white;
+}
+
+.product-item button.edit:hover {
+    background-color: #e0a800;
+}
+
+/* Delete Button */
+.product-item button.delete {
+    background-color: #dc3545;
+    color: white;
+}
+
+.product-item button.delete:hover {
+    background-color: #c82333;
+}
+
+/* Forms */
+.product-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-form label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.product-form input {
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.submit-button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    border: none;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: #218838;
+}
+
+/* Edit Form */
+.edit-form {
+    display: none;
+    margin-bottom: 20px;
+}
+
+.edit-form input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 10px 0;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.edit-form button {
+    margin-right: 10px;
+}

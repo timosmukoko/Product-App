@@ -1,0 +1,16 @@
+{
+  "name": "product-html-client",
+  "version": "1.0.0",
+  "main": "productService.js",
+  "scripts": {
+    "test": "echo \"jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jsdom": "^26.1.0"
+  }
+}

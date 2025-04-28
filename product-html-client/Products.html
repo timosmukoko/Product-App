@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Product List</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>Product List</h1>
+
+    <div class="button-group">
+      <a href="ProductCreate.html" class="nav-button">Create New Product</a>
+    </div>
+
+    <!-- Displaying Products -->
+    <div id="product-list" class="product-list">
+      <!-- Products will be dynamically listed here -->
+    </div>
+
+    <div class="button-group">
+      <a href="index.html" class="nav-button">Back to Home</a>
+    </div>
+  </div>
+
+  <script>
+    const API_URL = "http://localhost:3000/products";  // Your Rails API endpoint
+
+    // Fetch and display all products (for Product List Page)
+    async function fetchProducts() {
+      try {
+        const response = await fetch(API_URL);
+        const products = await response.json();
+        const productList = document.getElementById("product-list");
+        productList.innerHTML = ''; // Clear existing list
+
+        // Check if the response contains products
+        if (products.length === 0) {
+          productList.innerHTML = '<p>No products available.</p>';
+          return;
+        }
+
+        // Dynamically create HTML for each product
+        products.forEach(product => {
+          const productItem = document.createElement("div");
+          productItem.classList.add("product-item");
+
+          // Format price
+          const priceFormatted = parseFloat(product.price).toFixed(2);
+
+          productItem.innerHTML = `
+            <div>
+              <strong>${product.name}</strong><br>
+              ${product.description}<br>
+              $${priceFormatted}<br>
+              <small>Available: ${product.available ? '✅' : '❌'}</small>
+            </div>
+            <div class="product-actions">
+              <button class="edit" onclick="editProduct(${product.id})">Edit</button>
+              <button class="delete" onclick="deleteProduct(${product.id})">Delete</button>
+            </div>
+          `;
+          productList.appendChild(productItem);
+        });
+      } catch (error) {
+        console.error("Error fetching products:", error);
+        document.getElementById("product-list").innerHTML = '<p>Error loading products. Please try again later.</p>';
+      }
+    }
+
+    // Edit product
+    function editProduct(productId) {
+      window.location.href = `ProductEdit.html?id=${productId}`; // Redirect to the edit page with product ID
+    }
+
+    // Delete product
+    async function deleteProduct(productId) {
+      try {
+        const response = await fetch(`${API_URL}/${productId}`, {
+          method: "DELETE",
+        });
+
+        if (response.ok) {
+          alert("Product deleted successfully!");
+          fetchProducts(); // Refresh the product list
+        } else {
+          alert("Error deleting product.");
+        }
+      } catch (error) {
+        console.error("Error deleting product:", error);
+        alert("Error deleting product.");
+      }
+    }
+
+    // Initialize the product list (for Products Page)
+    if (document.getElementById("product-list")) {
+      fetchProducts();
+    }
+  </script>
+
+</body>
+</html>

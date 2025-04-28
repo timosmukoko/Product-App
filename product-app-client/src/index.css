@@ -1,0 +1,235 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  button {
+    cursor: pointer;
+  }
+  
+  button.delete-button {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  /* Main Container */
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .main-content {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  /* Navbar Styles */
+  .navbar {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+  }
+  
+  .navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+  }
+  
+  .navbar-links {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .navbar-link {
+    color: white;
+    font-size: 18px;
+  }
+  
+  .navbar-link:hover {
+    color: #f44336;
+  }
+  
+  .navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+  }
+  
+  /* Footer Styles */
+  .footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  /* Container for the pages */
+  .home-container,
+  .product-list-container,
+  .product-detail-container,
+  .product-edit-container,
+  .product-new-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  button,
+  button.delete-button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  input,
+  textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .search-input {
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .product-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .product-item {
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #fafafa;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+  }
+  
+  .product-item strong {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .featured-product {
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  .featured-product h3 {
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .featured-product p {
+    font-size: 18px;
+  }
+  
+  .featured-product .button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    border-radius: 5px;
+  }
+  
+  .featured-product .button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Product List Styles */
+.product-list-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .product-item {
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #fafafa;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .product-item strong {
+    font-size: 18px;
+  }
+  
+  .view-link,
+  .edit-link,
+  .delete-button {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .view-link:hover,
+  .edit-link:hover,
+  .delete-button:hover {
+    text-decoration: underline;
+  }
+  
+  .delete-button {
+    background-color: #f44336;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .delete-button:hover {
+    background-color: #d32f2f;
+  }
+  
+  /* Filter Styles */
+  select {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+  }
+  
