@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3000/products";  // Your Rails API endpoint
+const API_URL = "http://3.252.55.211/api/products";  // Your Rails API endpoint
 
 // Fetch and display all products (for Product List Page)
 async function fetchProducts() {
