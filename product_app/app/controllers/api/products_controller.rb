@@ -1,4 +1,3 @@
-# app/controllers/api/products_controller.rb
 
 module Api
   class ProductsController < ApplicationController
