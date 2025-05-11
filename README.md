@@ -9,16 +9,16 @@ All three parts are organized inside this single repository for easier deploymen
 
 ---
 
-## 🗂 Project Structure
+## Project Structure
 
 ---
 
-## ⚙️ Setup Instructions
+## Setup Instructions
 
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/your-project-repo.git
+git clone https://github.com/timosmukoko/Product-App.git
 cd your-project-repo
 
 2. Backend Setup (Ruby on Rails API)
@@ -82,81 +82,78 @@ AWS EC2 instance (Ubuntu 20.04 or Amazon Linux 2)
 
 Ruby, Node.js, Yarn, Nginx installed
 
-PostgreSQL or other production-grade DB installed
+Sqlite DB installed
 
 Step-by-Step Deployment
 SSH into your EC2 instance:
 
-bash
-Copy
-Edit
 ssh ec2-user@your-ec2-public-ip
-Install required software: Ruby, Node.js, PostgreSQL, Yarn, Nginx.
+Install required software: Ruby, Node.js,Yarn, Nginx.
 
 Clone the repository:
 
-bash
-Copy
-Edit
 git clone https://github.com/your-username/your-project-repo.git
 cd your-project-repo
 Set up the Rails API backend:
 
-bash
-Copy
-Edit
 cd backend
 bundle install
 RAILS_ENV=production rails db:create db:migrate
 Build the React frontend:
 
-bash
-Copy
-Edit
-cd ../react-client
+cd ../
 npm install
 npm run build
 Configure Nginx to:
 
-Serve the react-client/build/ folder
+Serve the product-app-client/build/ folder
 
-Serve static html-client/
+Serve static product-html-client/
 
 Proxy API requests to the Rails backend running on Puma or Unicorn
 
 Start the Rails server in production using:
 
-bash
-Copy
-Edit
-RAILS_ENV=production rails server -b 0.0.0.0
+rails s -b 127.0.0.1 -p 3000 -e development
 or use Puma/ Passenger with Nginx for better production performance.
 
 Example Nginx Configuration
 nginx
-Copy
-Edit
+
 server {
     listen 80;
-    server_name your-ec2-public-ip;
+    server_name ec2 ip;
 
-    root /home/ec2-user/your-project-repo/react-client/build;
-    index index.html;
-
-    location /api/ {
-        proxy_pass http://localhost:3000/;
-        proxy_set_header Host $host;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    # Redirect /html to /html/
+    location = /html {
+        return 301 /html/;
     }
 
-    location /html/ {
-        root /home/ec2-user/your-project-repo/html-client;
+    # Serve HTML App
+    location ^~ /html/ {
+        alias /home/ubuntu/Product-App/product-html-client/;
+        index index.html;
+        try_files $uri $uri/ /index.html;
     }
 
+    # Serve REACT Client
     location / {
-        try_files $uri /index.html;
+        root /home/ubuntu/Product-App/product-app-client/build;
+        index index.html;
+        try_files $uri $uri/ /index.html;
+    }
+
+    # Proxy API requests to Rails Server
+    location /api/ {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
     }
 }
+
 📈 Why Testing Is Important
 Unit Testing
 Focus: Individual components (functions, models, controllers)
@@ -175,35 +172,24 @@ Both types of testing complement each other and ensure your application is robus
 Part	Technology
 Backend	Ruby on Rails (API only)
 Frontend 1	React.js (SPA)
-Frontend 2	HTML5, CSS3, Vanilla JS
-Database	PostgreSQL
+Frontend 2	HTML5, CSS3
+Database	SQlite
 Web Server	Nginx
 Testing	Jest, RSpec, Cypress
 📋 Future Improvements
 Add authentication (JWT or Devise)
 
-Full Docker containerization
-
-CI/CD pipeline (GitHub Actions or AWS CodePipeline)
-
 API Rate Limiting and Security Hardening
 
 🤝 Authors and Contributions
-Lead Developer: Your Name
-
-Contributors: Others (if any)
+Lead Developer: Timos Mukoo
 
 📝 License
 This project is licensed under the MIT License.
-
-yaml
-Copy
-Edit
-
 ---
 
 # ✅ Notes:
-- `"timosmukoko/Product-App"` and `"Timos Mukoko"`
+- `"timosmukoko
 -
 
 ---
